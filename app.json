@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "Smart TV App",
+    "slug": "smart-tv-app",
+    "version": "1.0.0",
+    "orientation": "default",
+    "platforms": ["ios", "android", "web"],
+    "scheme": "smarttv",
+    "userInterfaceStyle": "dark",
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    }
+  }
+}
