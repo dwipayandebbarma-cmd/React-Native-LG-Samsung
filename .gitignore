@@ -5,3 +5,5 @@ dist/
 web-build/
 *.log
 .DS_Store
+*.ipk
+*.ipk
