@@ -1,14 +1,24 @@
 import 'react-native-gesture-handler';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet, View } from 'react-native';
 import { initSpatialNavigation } from './src/spatial/initSpatialNavigation';
 import { AppNavigator } from './src/navigation/AppNavigator';
+import { registerWebTvBackHandler } from './src/platform/registerWebTvBackHandler';
 
 export default function App() {
+  const navigationRef = useRef(null);
+
   useEffect(() => {
     initSpatialNavigation();
+  }, []);
+
+  useEffect(() => {
+    if (Platform.OS !== 'web') {
+      return;
+    }
+    return registerWebTvBackHandler(() => navigationRef.current);
   }, []);
 
   useEffect(() => {
@@ -31,7 +41,7 @@ export default function App() {
 
   return (
     <View style={styles.root}>
-      <NavigationContainer>
+      <NavigationContainer ref={navigationRef}>
         <AppNavigator />
       </NavigationContainer>
       <StatusBar style="light" />

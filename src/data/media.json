@@ -4,13 +4,15 @@
       "name": "Movies",
       "videos": [
         {
-          "description": "Tears of Steel (HLS) sample stream (Unified Streaming demo).",
+          "description": "Sample MP4 + HLS streams for TV browsers.",
           "sources": [
-            "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8"
+            "https://samplelib.com/mp4/sample-5s.mp4",
+            "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+            "https://storage.googleapis.com/shaka-demo-assets/angel-one-hls/hls.m3u8"
           ],
-          "subtitle": "HLS stream",
-          "thumb": "",
-          "title": "Tears of Steel"
+          "subtitle": "MP4 / HLS",
+          "thumb": "https://placehold.co/400x225/1a1a22/ffffff/png?text=Big+Buck+Bunny",
+          "title": "Sample Video"
         }
       ]
     }

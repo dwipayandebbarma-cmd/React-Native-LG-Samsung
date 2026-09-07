@@ -21,7 +21,7 @@ export function SideNavItem({ focusKey, icon, label, isActive, onEnterPress }) {
       collapsable={false}
       focusable
     >
-      <Text style={styles.icon}>{icon}</Text>
+      <Text style={[styles.icon, focused && styles.iconFocused]}>{icon}</Text>
     </View>
   );
 }
@@ -45,5 +45,14 @@ const styles = StyleSheet.create({
   itemFocused: {
     borderWidth: 2,
     borderColor: '#ffffff',
+  },
+  icon: {
+    fontSize: 22,
+    lineHeight: 26,
+    color: '#ffffff',
+    opacity: 0.9,
+  },
+  iconFocused: {
+    opacity: 1,
   },
 });

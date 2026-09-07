@@ -1,0 +1,103 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.smarttv.app"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:4:5-67
+11-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:4:22-64
+12
+13    <uses-feature
+13-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:6:5-8:35
+14        android:name="android.software.leanback"
+14-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:7:9-49
+15        android:required="true" />
+15-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:8:9-32
+16    <uses-feature
+16-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:9:5-11:36
+17        android:name="android.hardware.touchscreen"
+17-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:10:9-52
+18        android:required="false" />
+18-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:11:9-33
+19
+20    <permission
+20-->[androidx.core:core:1.9.0] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/761d68ccdd62ecb8703967694e2fec50/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+21        android:name="com.smarttv.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+21-->[androidx.core:core:1.9.0] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/761d68ccdd62ecb8703967694e2fec50/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+22        android:protectionLevel="signature" />
+22-->[androidx.core:core:1.9.0] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/761d68ccdd62ecb8703967694e2fec50/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+23
+24    <uses-permission android:name="com.smarttv.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+24-->[androidx.core:core:1.9.0] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/761d68ccdd62ecb8703967694e2fec50/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+24-->[androidx.core:core:1.9.0] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/761d68ccdd62ecb8703967694e2fec50/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+25
+26    <application
+26-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:13:5-32:19
+27        android:allowBackup="true"
+27-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:14:9-35
+28        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+28-->[androidx.core:core:1.9.0] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/761d68ccdd62ecb8703967694e2fec50/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+29        android:banner="@drawable/tv_banner"
+29-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:15:9-45
+30        android:extractNativeLibs="false"
+31        android:icon="@mipmap/ic_launcher"
+31-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:16:9-43
+32        android:label="@string/app_name"
+32-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:17:9-41
+33        android:supportsRtl="true"
+33-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:18:9-35
+34        android:theme="@style/Theme.SmartTVApp"
+34-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:19:9-48
+35        android:usesCleartextTraffic="true" >
+35-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:20:9-44
+36        <activity
+36-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:22:9-31:20
+37            android:name="com.smarttv.app.MainActivity"
+37-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:23:13-41
+38            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize"
+38-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:25:13-94
+39            android:exported="true"
+39-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:24:13-36
+40            android:screenOrientation="landscape" >
+40-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:26:13-50
+41            <intent-filter>
+41-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:27:13-30:29
+42                <action android:name="android.intent.action.MAIN" />
+42-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:28:17-69
+42-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:28:25-66
+43
+44                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+44-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:29:17-86
+44-->/home/dwipayan/Desktop/React Native/android-tv/app/src/main/AndroidManifest.xml:29:27-83
+45            </intent-filter>
+46        </activity>
+47
+48        <provider
+48-->[androidx.emoji2:emoji2:1.2.0] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/8fe26b8a71591694ef070937dfcc4c24/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+49            android:name="androidx.startup.InitializationProvider"
+49-->[androidx.emoji2:emoji2:1.2.0] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/8fe26b8a71591694ef070937dfcc4c24/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+50            android:authorities="com.smarttv.app.androidx-startup"
+50-->[androidx.emoji2:emoji2:1.2.0] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/8fe26b8a71591694ef070937dfcc4c24/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+51            android:exported="false" >
+51-->[androidx.emoji2:emoji2:1.2.0] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/8fe26b8a71591694ef070937dfcc4c24/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+52            <meta-data
+52-->[androidx.emoji2:emoji2:1.2.0] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/8fe26b8a71591694ef070937dfcc4c24/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+53                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+53-->[androidx.emoji2:emoji2:1.2.0] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/8fe26b8a71591694ef070937dfcc4c24/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+54                android:value="androidx.startup" />
+54-->[androidx.emoji2:emoji2:1.2.0] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/8fe26b8a71591694ef070937dfcc4c24/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+55            <meta-data
+55-->[androidx.lifecycle:lifecycle-process:2.4.1] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/c8f2ede385039d585eaa800e78abb9ef/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+56                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+56-->[androidx.lifecycle:lifecycle-process:2.4.1] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/c8f2ede385039d585eaa800e78abb9ef/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+57                android:value="androidx.startup" />
+57-->[androidx.lifecycle:lifecycle-process:2.4.1] /tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/c8f2ede385039d585eaa800e78abb9ef/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+58        </provider>
+59    </application>
+60
+61</manifest>

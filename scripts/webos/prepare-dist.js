@@ -35,6 +35,7 @@ function main() {
     title: 'Smart TV App',
     icon: 'icon.png',
     largeIcon: 'icon.png',
+    disableBackHistoryAPI: true,
   };
 
   fs.writeFileSync(appinfoPath, JSON.stringify(appinfo, null, 2) + '\n', 'utf8');

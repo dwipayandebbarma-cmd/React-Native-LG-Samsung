@@ -10,7 +10,16 @@
     "start:dev": "cross-env NODE_ENV=development expo start --web --clear",
     "build": "expo export --platform web && node scripts/webos/fix-bundle-path.js",
     "build:dev": "cross-env NODE_ENV=development expo export --platform web && node scripts/webos/fix-bundle-path.js",
-    "lg": "npm run build && node scripts/webos/prepare-dist.js && ares-package -n ./dist"
+    "build:tizen": "npm run build && node scripts/tizen/prepare-tizen.js",
+    "build:tizen:sync": "npm run build && TIZEN_SYNC_TARGET=/home/dwipayan/workspace/RNPOC TIZEN_KEEP_CONFIG=1 node scripts/tizen/prepare-tizen.js",
+    "build:tv": "npm run build && node scripts/webos/prepare-dist.js && node scripts/android-tv/sync-assets.js",
+    "lg": "npm run build:tv && ares-package -n ./dist",
+    "demo:lg": "node scripts/demo/lg-emulator.js",
+    "demo:lg:simulator": "cross-env WEBOS_DEVICE=simulator node scripts/demo/lg-emulator.js",
+    "demo:lg:simulator:fix": "bash scripts/webos/fix-simulator-wrapper.sh",
+    "build:android-apk": "bash scripts/android-tv/build-apk.sh",
+    "demo:android-tv": "npm run build:tv && cd android-tv && ./gradlew installDebug",
+    "demo:browser": "npm run build && node scripts/demo/browser-server.js"
   },
   "dependencies": {
     "@noriginmedia/norigin-spatial-navigation": "^2.3.0",

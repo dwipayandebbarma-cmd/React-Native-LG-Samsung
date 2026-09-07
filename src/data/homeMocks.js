@@ -1,19 +1,22 @@
 /** Placeholder content for the home layout (replace with API data). */
 
+/** Placeholder images — use a CDN that returns 200 (Google gtv bucket now 403). */
+const PLACEHOLDER = 'https://placehold.co';
+
 export const BANNER_MOCK = {
   title: 'Onnum Onnum Moonu',
   metaLine: '2023 · Show · U/A 7+',
   subLine: 'Malayalam · Entertainment',
   description:
     'A light-hearted variety show bringing together comedy, music, and celebrity conversations.',
-  imageUri: 'https://picsum.photos/seed/smarttv-banner/1600/900',
+  imageUri: `${PLACEHOLDER}/1600x900/050012/d9468c/png?text=Smart+TV+Banner`,
 };
 
 function makeItems(prefix, count, w, h, label) {
   return Array.from({ length: count }, (_, i) => ({
     id: `${prefix}-${i}`,
     title: `${label} ${i + 1}`,
-    imageUri: `https://picsum.photos/seed/${prefix}-${i}/${w}/${h}`,
+    imageUri: `${PLACEHOLDER}/${w}x${h}/1a1a22/d9468c/png?text=${encodeURIComponent(`${label} ${i + 1}`)}`,
   }));
 }
 

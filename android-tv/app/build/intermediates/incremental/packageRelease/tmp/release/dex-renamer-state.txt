@@ -1,0 +1,4 @@
+#Sat Aug 22 08:07:33 IST 2026
+base.0=/home/dwipayan/Desktop/React Native/android-tv/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.smarttv.app-mergeReleaseResources-2:/values-v19/values-v19.xml",
+            "map": [
+                {
+                    "source": "/tmp/cursor-sandbox-cache/79d9736dfdc7f514eec1d3227092d2c1/gradle/caches/transforms-3/3330b4bcfddc97862bef43a18b3fae2e/transformed/leanback-1.0.0/res/values-v19/values-v19.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "10",
+                        "endColumns": "12",
+                        "endOffsets": "659"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "com.smarttv.app",
+  "version": "1.0.0",
+  "vendor": "SmartTV",
+  "type": "web",
+  "main": "index.html",
+  "title": "Smart TV App",
+  "icon": "icon.png",
+  "largeIcon": "icon.png",
+  "disableBackHistoryAPI": true
+}

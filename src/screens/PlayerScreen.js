@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Platform, StyleSheet, Text, View } from 'react-native';
 import { loadShakaPlayer } from '../player/loadShaka';
+import { isTvBackKey } from '../platform/registerWebTvBackHandler';
 import media from '../data/media.json';
 import { PlayerOverlay } from './player/PlayerOverlay';
 
@@ -92,44 +93,88 @@ export function PlayerScreen({ route, navigation }) {
 
         setErrorText('');
         setIsBuffering(true);
-        const src = normalizeSourceUrl(video.sources[0]);
-
-        // For plain MP4, skip Shaka and use native <video>.
-        if (isProgressiveMp4(src)) {
-          if (shakaPlayerRef.current) {
-            try {
-              await shakaPlayerRef.current.destroy();
-            } catch (_) {}
-            shakaPlayerRef.current = null;
-          }
-          el.src = src;
-          el.load?.();
-          tryAutoPlay();
-          cleanupPlayer = async () => {};
+        const sources = (video.sources || []).map(normalizeSourceUrl).filter(Boolean);
+        if (!sources.length) {
+          setErrorText('No playable source found in media.json');
           return;
         }
 
-        const shaka = await loadShakaPlayer();
-        if (!mounted || !shaka) return;
-
-        const player = new shaka.Player(el);
-        shakaPlayerRef.current = player;
-
-        player.addEventListener('error', (evt) => {
-          const detail = evt?.detail;
-          const data = Array.isArray(detail?.data) ? detail.data : [];
-          const tail = data.length ? ` (${data.map((d) => String(d)).join(' | ')})` : '';
-          setErrorText(`Shaka error ${detail?.code ?? ''}${tail}`.trim());
-        });
-
-        await player.load(src);
-        tryAutoPlay();
-
-        cleanupPlayer = async () => {
+        let lastError = '';
+        for (const src of sources) {
           try {
-            await player.destroy();
-          } catch (_) {}
-        };
+            if (isProgressiveMp4(src)) {
+              if (shakaPlayerRef.current) {
+                try {
+                  await shakaPlayerRef.current.destroy();
+                } catch (_) {}
+                shakaPlayerRef.current = null;
+              }
+              await new Promise((resolve, reject) => {
+                const onReady = () => {
+                  cleanup();
+                  resolve();
+                };
+                const onError = () => {
+                  cleanup();
+                  reject(new Error(`Failed to load MP4: ${src}`));
+                };
+                const cleanup = () => {
+                  el.removeEventListener('loadedmetadata', onReady);
+                  el.removeEventListener('canplay', onReady);
+                  el.removeEventListener('error', onError);
+                };
+                el.addEventListener('loadedmetadata', onReady, { once: true });
+                el.addEventListener('canplay', onReady, { once: true });
+                el.addEventListener('error', onError, { once: true });
+                el.src = src;
+                el.load?.();
+              });
+              tryAutoPlay();
+              cleanupPlayer = async () => {};
+              return;
+            }
+
+            const shaka = await loadShakaPlayer();
+            if (!mounted || !shaka) return;
+
+            if (shakaPlayerRef.current) {
+              try {
+                await shakaPlayerRef.current.destroy();
+              } catch (_) {}
+            }
+
+            const player = new shaka.Player(el);
+            shakaPlayerRef.current = player;
+
+            player.addEventListener('error', (evt) => {
+              const detail = evt?.detail;
+              const data = Array.isArray(detail?.data) ? detail.data : [];
+              const tail = data.length ? ` (${data.map((d) => String(d)).join(' | ')})` : '';
+              lastError = `Shaka error ${detail?.code ?? ''}${tail}`.trim();
+              setErrorText(lastError);
+            });
+
+            await player.load(src);
+            tryAutoPlay();
+
+            cleanupPlayer = async () => {
+              try {
+                await player.destroy();
+              } catch (_) {}
+            };
+            return;
+          } catch (e) {
+            lastError = e?.message || lastError || 'Failed to initialize player';
+            if (shakaPlayerRef.current) {
+              try {
+                await shakaPlayerRef.current.destroy();
+              } catch (_) {}
+              shakaPlayerRef.current = null;
+            }
+          }
+        }
+
+        setErrorText(lastError || 'Failed to initialize player');
       } catch (e) {
         setErrorText(e?.message || 'Failed to initialize player');
       }
@@ -198,20 +243,8 @@ export function PlayerScreen({ route, navigation }) {
       return;
     }
     const onKeyDown = (e) => {
-      // Back: return to previous screen (Home)
-      // Covers: Browser back keys, Escape, Backspace, and common TV remote keyCodes (LG webOS / Samsung Tizen).
-      if (
-        e.key === 'Escape' ||
-        e.key === 'Backspace' ||
-        e.key === 'BrowserBack' ||
-        e.key === 'GoBack' ||
-        e.keyCode === 8 ||
-        e.keyCode === 27 ||
-        e.keyCode === 461 ||
-        e.keyCode === 10009
-      ) {
-        e.preventDefault();
-        navigation?.goBack?.();
+      // Back is handled globally in registerWebTvBackHandler (capture phase for webOS).
+      if (isTvBackKey(e)) {
         return;
       }
       // Enter: toggle play/pause
@@ -233,7 +266,7 @@ export function PlayerScreen({ route, navigation }) {
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [navigation, seekBy, togglePlayPause]);
+  }, [seekBy, togglePlayPause]);
 
   if (Platform.OS !== 'web') {
     return (
@@ -251,7 +284,6 @@ export function PlayerScreen({ route, navigation }) {
           ref={videoRef}
           style={styles.video}
           playsInline
-          crossOrigin="anonymous"
           autoPlay
           preload="auto"
         />

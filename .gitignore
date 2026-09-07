@@ -2,7 +2,9 @@ node_modules/
 .expo/
 .expo-shared/
 dist/
+tizen-dist/
 web-build/
+android-tv/app/src/main/assets/www/
 *.log
 .DS_Store
 *.ipk
